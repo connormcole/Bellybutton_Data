@@ -62,7 +62,7 @@ function buildCharts(sample) {
     var samples = data.samples;
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var sampleResult = samples.filter(sampleObj => sampleObj.id == sample);
-    
+    console.log(sampleResult);
     // Gauge 1. Create a variable that filters the metadata array for the object with the desired sample number.
     var sampleNum = data.metadata.filter(sampleObj => sampleObj.id == sample);
 
@@ -73,12 +73,13 @@ function buildCharts(sample) {
      var metaFirst = sampleNum[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otuID = samples[0].otu_ids;
-    var otuLabel = samples[0].otu_labels;
-    var sampleValue = samples[0].sample_values;
+    var otuID = sampleOne.otu_ids;
+    console.log(otuID);
+    var otuLabel = sampleOne.otu_labels;
+    var sampleValue = sampleOne.sample_values;
 
     // Gauge 3. Create a variable that holds the washing frequency.
-    var wFreq = data.metadata[0].wfreq;
+    var wFreq = metaFirst.wfreq;
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
@@ -171,7 +172,3 @@ function buildCharts(sample) {
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
   });
 }
-
-buildCharts();
-
-
